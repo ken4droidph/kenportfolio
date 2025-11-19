@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Keneth Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>Keneth G.</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="../index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="skills.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="web.html">Web Design</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contact.html">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="web.html">Web Design</a>
+                <a href="contact.html">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+        <section>
+            <div class="main-container">
+                <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
+                    <img src="main.png" alt="">
+                </div>
+                <div class="content">
+                    
+                   
+                    <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000"><p><b>Work Experience:</b></p>
+<p>•   2018–2020 – YouTuber – Managed my own YouTube channel, creating and editing video content until the channel was demonetized. After graduating, I decided to focus on full-time work.</p>
+<p>•   2019 – Student Intern (5 months OJT) at Bongbong Villan Corp. – IT Specialist (Data entry using MS Excel/Word, CCTV monitoring, encoding, PC troubleshooting, printing stickers & barcodes).</p>
+<p>•   2021 – Home-based Graphic Artist (6 months) at EDSI Company – Edited product banners for social media.</p>
+<p>•   2021–2023 – Graphic Artist & IT Specialist at Ocana Padshop – Handled layout and operation of all types of printing/Xerox and large-format printing machines; also provided PC and network troubleshooting for colleagues.</p>
+<p>•   2023–2025 – Home-based Business Owner & Freelance Video Editor – Operated a small printing shop handling all types of customer printing requests, managed marketing through Facebook Ads, and provided PC & printer troubleshooting. During this time, I also returned to video editing, working on various projects and occasionally using AI-powered editing tools to create enhanced and innovative video content.</p>
+</p>
+                    <div class="social-links" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1200">
+                        <a href="https://web.facebook.com/keneth.gepanaga" ><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@MegoWorldPH"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@megoken"><i class="fa-brands fa-tiktok"></i></a>
+                       
+                    </div>
+                    <div class="btn" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="1300">
+                       <a href="portfolio.html">  <button>Portfolio</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init({offset:0});
+        </script>
+        <script>
+            function hamburg(){
+                const navbar = document.querySelector(".dropdown")
+                navbar.style.transform = "translateY(0px)"
+            }
+            function cancel(){
+                const navbar = document.querySelector(".dropdown")
+                navbar.style.transform = "translateY(-500px)"
+            }
+        </script>
+</body>
+</html>

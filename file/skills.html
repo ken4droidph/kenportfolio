@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Keneth Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>Keneth G.</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="../index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="skills.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="web.html">Web Design</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contact.html">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="web.html">Web Design</a>
+                <a href="contact.html">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+        <section>
+            <div class="main-container">
+                <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
+                    <img src="main.png" alt="">
+                </div>
+                <div class="content">
+                    
+                   <br> </br>
+                    <br> </br>
+                    <br> </br>
+                <br> </br>
+                <br> </br>
+                    <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000"><p><b>
+SUMMARY OF SKILLS AND QUALIFICATIONS:   
+</b></p>
+<p>•   Troubleshoot PC Software</p>
+<p>•   Troubleshoot Basic PC Hardware</p>
+<p>•   Reformat PC</p>
+<p>•   Detect & fix any kind of PC Problem</p>
+<p>•   Set-up and repair hardware, install, configure software and drivers</p>
+<p>•   Install /Uninstall Application Problem</p>
+<p>•   Networking</p>
+<p>•   Operate all type of printing machine</p>
+<p>•   Fast learner & Operate New Device or Machine</p>
+<p>•   Proficient in Microsoft Office including Word, PowerPoint and Excels</p>
+<p>•   Proficient in Photoshop</p>
+<p>•   Good in Layout Skills</p>
+<p>•   Good Analyzing Skills</p>
+<p>•   Good Research Skills</p>
+<p>•   Basic Programming  & Modification</p>
+<p>•   BASIC MANAGE ADS in any Social Media</p>
+<p>•   Fast learner and I can handle, the new work that will be given to me</p>
+<p>•   Communication skill in English 60 %</p>
+<p>•   Proficient in video editing (Filmora, Capcut, and similar tools)</p>
+<p>•   Experienced in creating AI-generated content and using AI-powered video editing tools (Leonardo, Veo 3, Pika, etc.)</p>
+
+</p>
+                    <div class="social-links" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1200">
+                        <a href="https://web.facebook.com/keneth.gepanaga" ><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@MegoWorldPH"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@megoken"><i class="fa-brands fa-tiktok"></i></a>
+                       
+                    </div>
+                    <div class="btn" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="1300">
+                       <a href="portfolio.html">  <button>Portfolio</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init({offset:0});
+        </script>
+        <script>
+            function hamburg(){
+                const navbar = document.querySelector(".dropdown")
+                navbar.style.transform = "translateY(0px)"
+            }
+            function cancel(){
+                const navbar = document.querySelector(".dropdown")
+                navbar.style.transform = "translateY(-500px)"
+            }
+        </script>
+</body>
+</html>
