@@ -8,66 +8,82 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        /* Basic gallery styles */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 40px 20px;
-        }
+/* Gallery Styles Inline (Specific to this page only) */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s;
-        }
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
+/* Hover effect for desktops */
+@media(min-width: 601px) {
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
 
-        .gallery-item::after {
-            content: "Click to Open";
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+    .gallery-item::after {
+        content: "Click to Open";
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.6);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
 
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
+    .gallery-item:hover::after {
+        opacity: 1;
+    }
+}
 
-        .main-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 20px;
-        }
+/* Responsive adjustments for tablets and mobiles */
+@media(max-width:1024px){
+    .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
 
-        @media(max-width:600px){
-            .gallery-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+@media(max-width:768px){
+    .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media(max-width:480px){
+    .gallery-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .gallery-item::after {
+        font-size: 0.8rem;
+        padding: 3px 6px;
+    }
+}
+</style>
 </head>
 <body>
     <nav>
