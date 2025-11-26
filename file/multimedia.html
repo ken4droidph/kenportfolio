@@ -59,7 +59,7 @@ h1 {
 
 #map, .audio-wrapper, .clock-wrapper {
   width: 95%;
-  height: calc(100% - 50px); /* subtract title height */
+  height: calc(100% - 50px);
   border-radius: 10px;
 }
 
@@ -95,11 +95,10 @@ button:hover {
   animation: pulse 2s infinite;
 }
 
-/* Video wrapper for 16:9 ratio */
 .video-wrapper {
   position: relative;
   width: 95%;
-  height: calc(100% - 50px); /* same height as map/audio/clock */
+  height: calc(100% - 50px);
 }
 
 .video-wrapper iframe {
@@ -112,7 +111,6 @@ button:hover {
   object-fit: cover;
 }
 
-/* Animations */
 @keyframes slideUp {
   0% { transform: translateY(50px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
@@ -128,7 +126,7 @@ button:hover {
   50% { transform: scale(1.1); }
 }
 
-/* Focus Effect */
+/* Focused effect */
 .focused {
   position: fixed !important;
   top: 50% !important;
@@ -148,7 +146,7 @@ button:hover {
 .focused .audio-wrapper, 
 .focused .clock-wrapper,
 .focused .video-wrapper {
-  height: calc(100% - 50px) !important; /* leave space for h2 */
+  height: calc(100% - 50px) !important; 
 }
 
 .overlay {
@@ -160,6 +158,22 @@ button:hover {
   background: rgba(0,0,0,0.5);
   z-index: 998;
   display: none;
+}
+
+/* Exit button for mobile-friendly focus mode */
+#exit-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 1.5em;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -206,55 +220,60 @@ button:hover {
 </div>
 
 <div class="overlay" id="overlay"></div>
+<button id="exit-btn">✕</button>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-  // Initialize Map with new Bacolod pin
+  // Initialize Map
   const map = L.map('map').setView([10.669025087733806, 122.94915310796878], 13); 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19
-  }).addTo(map);
-  L.marker([10.669025087733806, 122.94915310796878]).addTo(map)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+  L.marker([10.669025087733806, 122.94915310796878])
+    .addTo(map)
     .bindPopup('Bacolod City')
     .openPopup();
 
-  // Live Clock (auto adjusts to user's local time)
+  // Live Clock
   function updateClock() {
-    const now = new Date();
-    document.getElementById('clock').textContent = now.toLocaleTimeString();
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString();
   }
   setInterval(updateClock, 1000);
   updateClock();
 
-  // Focus / Modal effect
   const overlay = document.getElementById('overlay');
+  const exitBtn = document.getElementById('exit-btn');
   const items = document.querySelectorAll('.grid-item');
 
+  function exitFocus() {
+    items.forEach(i => i.classList.remove('focused'));
+    items.forEach(i => i.style.opacity = '1');
+    overlay.style.display = 'none';
+    exitBtn.style.display = 'none';
+    if(player && player.pauseVideo) player.pauseVideo();
+  }
+
+  // Item click: enter focus mode
   items.forEach(item => {
-    item.addEventListener('click', (e) => {
+    item.addEventListener('click', e => {
       if(e.target.tagName === 'BUTTON') return;
       items.forEach(i => i.classList.remove('focused'));
       item.classList.add('focused');
       overlay.style.display = 'block';
-      items.forEach(i => i.style.opacity = i===item? '1':'0.3');
+      exitBtn.style.display = 'block';
+      items.forEach(i => i.style.opacity = i===item?'1':'0.3');
+
+      // Resize map if focused
+      if(item.id === 'map-item') setTimeout(() => map.invalidateSize(), 300);
     });
   });
 
-  overlay.addEventListener('click', () => {
-    items.forEach(i => i.classList.remove('focused'));
-    items.forEach(i => i.style.opacity = '1');
-    overlay.style.display = 'none';
-    if(player && player.pauseVideo) player.pauseVideo();
-  });
+  overlay.addEventListener('click', exitFocus);
+  exitBtn.addEventListener('click', exitFocus);
 
   // YouTube Player API
   let player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('yt-video');
-  }
+  function onYouTubeIframeAPIReady() { player = new YT.Player('yt-video'); }
 
-  // Play + Focus button for video
   const videoBtn = document.getElementById('video-btn');
   const videoItem = document.getElementById('video-item');
 
@@ -262,7 +281,8 @@ button:hover {
     items.forEach(i => i.classList.remove('focused'));
     videoItem.classList.add('focused');
     overlay.style.display = 'block';
-    items.forEach(i => i.style.opacity = i===videoItem? '1':'0.3');
+    exitBtn.style.display = 'block';
+    items.forEach(i => i.style.opacity = i===videoItem?'1':'0.3');
 
     if(player && player.getPlayerState) {
       const state = player.getPlayerState();
