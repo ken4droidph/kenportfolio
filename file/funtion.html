@@ -148,6 +148,7 @@ h2 { margin-bottom: 10px; color: #333; text-align: center; }
             <button>4</button><button>5</button><button>6</button><button>*</button>
             <button>1</button><button>2</button><button>3</button><button>-</button>
             <button>0</button><button>.</button><button>=</button><button>+</button>
+            <button>C</button><button>⟵</button>
         </div>
     </div>
 </div>
@@ -196,7 +197,13 @@ calcButtons.forEach(btn => {
         if(val === '=') {
             try { calcExp = eval(calcExp).toString(); } 
             catch { calcExp = 'Error'; }
-        } else { calcExp += val; }
+        } else if(val === 'C') {
+            calcExp = '';
+        } else if(val === '⟵') {
+            calcExp = calcExp.slice(0, -1);
+        } else {
+            calcExp += val;
+        }
         calcScreen.value = calcExp;
     });
 });
@@ -205,7 +212,6 @@ calcButtons.forEach(btn => {
 const todoForm = document.getElementById('todoForm');
 const todoInput = document.getElementById('todoInput');
 const todoList = document.getElementById('todoList');
-
 todoForm.addEventListener('submit', e => {
     e.preventDefault();
     const task = todoInput.value.trim();
@@ -248,35 +254,28 @@ let gravity = 0.5;
 let bounce = 0.7;
 let dragging = false;
 let offsetX = 0, offsetY = 0;
-
 function randomVelocity() {
     velocityX = (Math.random() * 4 + 2) * (Math.random() < 0.5 ? 1 : -1);
     velocityY = (Math.random() * 4 + 2) * (Math.random() < 0.5 ? 1 : -1);
 }
 randomVelocity();
-
 function animateBall() {
     if (!dragging) {
         const floor = container.clientHeight - ball.offsetHeight;
         const rightWall = container.clientWidth - ball.offsetWidth;
-
         posX += velocityX;
         posY += velocityY;
         velocityY += gravity;
-
         if (posY > floor) { posY = floor; velocityY *= -bounce; }
         if (posY < 0) { posY = 0; velocityY *= -bounce; }
-
         if (posX > rightWall) { posX = rightWall; velocityX *= -bounce; }
         if (posX < 0) { posX = 0; velocityX *= -bounce; }
-
         ball.style.left = posX + 'px';
         ball.style.top = posY + 'px';
     }
     requestAnimationFrame(animateBall);
 }
 animateBall();
-
 ball.addEventListener('mousedown', e => {
     dragging = true;
     ball.classList.add('dragging');
