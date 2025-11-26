@@ -3,105 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <title>Keneth Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-   <style>
-/* Gallery Styles Inline (Specific to this page only) */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s;
-}
-
-/* Title overlay */
-.gallery-item .gallery-title {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    text-align: center;
-    padding: 8px 0;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-/* Hover effect for desktops */
-@media(min-width: 601px) {
-    .gallery-item:hover img {
-        transform: scale(1.1);
-    }
-
-    .gallery-item::after {
-        content: "Click to Open";
-        position: absolute;
-        bottom: 35px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.6);
-        color: #fff;
-        padding: 5px 10px;
-        border-radius: 10px;
-        font-size: 0.9rem;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .gallery-item:hover::after {
-        opacity: 1;
-    }
-}
-
-/* Responsive adjustments for tablets and mobiles */
-@media(max-width:1024px){
-    .gallery-container {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    }
-}
-
-@media(max-width:768px){
-    .gallery-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-}
-
-@media(max-width:480px){
-    .gallery-container {
-        grid-template-columns: 1fr;
-        padding: 10px;
-    }
-
-    .gallery-item::after {
-        font-size: 0.8rem;
-        padding: 3px 6px;
-    }
-
-    .gallery-item .gallery-title {
-        font-size: 0.9rem;
-        padding: 6px 0;
-    }
-}
-</style>
 </head>
 <body>
     <nav>
@@ -116,8 +21,9 @@
                 <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="web.html">Web Design</a></div>
                 <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contact.html">Contact Us</a></div>
             </div>
-            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+            <i class="fa-solid fa-bars hamburg"></i>
         </div>
+
         <div class="dropdown">
             <div class="links">
                 <a href="../index.html">Home</a>
@@ -125,67 +31,82 @@
                 <a href="skills.html">Skills</a>
                 <a href="web.html">Web Design</a>
                 <a href="contact.html">Contact Us</a>
-                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+                <i class="fa-solid fa-xmark cancel"></i>
             </div>
         </div>
     </nav>
 
     <section>
-    <div class="main-container">
-        <div class="gallery-container">
-            <a href="1/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000">
-                <img src="1.jpg" alt="Web Design 1">
-                <div class="gallery-title">Web Design 1</div>
-            </a>
-            <a href="2/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-                <img src="2.jpg" alt="Web Design 2">
-                <div class="gallery-title">Web Design 2</div>
-            </a>
-            <a href="3/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="3.jpg" alt="Web Design 3">
-                <div class="gallery-title">Web Design 3</div>
-            </a>
-            <a href="4/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="4.jpg" alt="Web Design 4">
-                <div class="gallery-title">Web Design 4</div>
-            </a>
-            <a href="5/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="5.jpg" alt="Web Design 5">
-                <div class="gallery-title">Web Design 5</div>
-            </a>
-            <a href="js.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="6.jpg" alt="Web Design 6">
-                <div class="gallery-title">JS FUNCTION Comparison</div>
-            </a>
-             <a href="snake.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="7.jpg" alt="Web Design 7">
-                <div class="gallery-title">JS SNAKE GAME RESPONSIVE</div>
-            </a>
-             <a href="keneth.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="8.jpg" alt="Web Design 8">
-                <div class="gallery-title">JS NAME ANIMATION</div>
-            </a>
-             <a href="funtion.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                <img src="9.jpg" alt="Web Design 8">
-                <div class="gallery-title">Mini Projects Showcase + Kill The Snake</div>
-            </a>
+        <div class="main-container">
+            <div class="gallery-container">
+                <a href="1/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000">
+                    <img src="1.jpg" alt="Web Design 1">
+                    <div class="gallery-title">Web Design 1</div>
+                </a>
+                <a href="2/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+                    <img src="2.jpg" alt="Web Design 2">
+                    <div class="gallery-title">Web Design 2</div>
+                </a>
+                <a href="3/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="3.jpg" alt="Web Design 3">
+                    <div class="gallery-title">Web Design 3</div>
+                </a>
+                <a href="4/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="4.jpg" alt="Web Design 4">
+                    <div class="gallery-title">Web Design 4</div>
+                </a>
+                <a href="5/index.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="5.jpg" alt="Web Design 5">
+                    <div class="gallery-title">Web Design 5</div>
+                </a>
+                <a href="js.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="6.jpg" alt="Web Design 6">
+                    <div class="gallery-title">JS FUNCTION Comparison</div>
+                </a>
+                <a href="snake.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="7.jpg" alt="Web Design 7">
+                    <div class="gallery-title">JS SNAKE GAME RESPONSIVE</div>
+                </a>
+                <a href="keneth.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="8.jpg" alt="Web Design 8">
+                    <div class="gallery-title">JS NAME ANIMATION</div>
+                </a>
+                <a href="funtion.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="9.jpg" alt="Web Design 9">
+                    <div class="gallery-title">Mini Projects Showcase + Kill The Snake</div>
+                </a>
+                <a href="multimedia.html" class="gallery-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="10.jpg" alt="Web Design 9">
+                    <div class="gallery-title">Multimedia Dashboard</div>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({offset:0});
+        AOS.init({offset:0});
     </script>
     <script>
-        function hamburg(){
-            const navbar = document.querySelector(".dropdown")
-            navbar.style.transform = "translateY(0px)"
-        }
-        function cancel(){
-            const navbar = document.querySelector(".dropdown")
-            navbar.style.transform = "translateY(-500px)"
-        }
+       const hamburgBtn = document.querySelector(".hamburg");
+const cancelBtn = document.querySelector(".cancel");
+const dropdown = document.querySelector(".dropdown");
+
+hamburgBtn.addEventListener("click", () => {
+    dropdown.classList.add("active");
+});
+
+cancelBtn.addEventListener("click", () => {
+    dropdown.classList.remove("active");
+});
+
+// click outside dropdown to close
+dropdown.addEventListener("click", (e) => {
+    if(e.target === dropdown){
+        dropdown.classList.remove("active");
+    }
+});
+
     </script>
 </body>
 </html>

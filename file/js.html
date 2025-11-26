@@ -88,6 +88,7 @@
   <div class="box d3" id="d3-box">
     <h2>D3.js: Simple Bar Chart</h2>
     <svg></svg>
+    <div id="buttons-container" style="margin-top:10px;"></div>
   </div>
 </div>
 
@@ -138,26 +139,49 @@ $('#jq-input').on('input', function(){
 
 <!-- D3.js Script -->
 <script>
-const data = [100,80,45,60,20];
+let data = [100, 80, 45, 60, 20];
+const labels = ["A","B","C","D","E"];
 const svg = d3.select("#d3-box svg");
 const width = svg.node().getBoundingClientRect().width;
 const barHeight = 25;
 
-svg.selectAll("rect")
-  .data(data)
+// Function to render bars
+function renderBars() {
+  svg.selectAll("*").remove(); // clear previous
+
+  svg.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("width", d=>d*2)
+    .attr("height", barHeight-5)
+    .attr("y",(d,i)=>i*barHeight)
+    .attr("fill","#69b3a2");
+
+  svg.selectAll("text")
+    .data(data)
+    .enter()
+    .append("text")
+    .attr("x", d=>d*2 + 5)
+    .attr("y",(d,i)=>i*barHeight + 17)
+    .text((d,i)=>labels[i] + ": " + d);
+}
+
+// Initial render
+renderBars();
+
+// Add buttons A-E
+const buttonContainer = d3.select("#buttons-container");
+buttonContainer.selectAll("button")
+  .data(labels)
   .enter()
-  .append("rect")
-  .attr("width", d=>d*2)
-  .attr("height", barHeight-5)
-  .attr("y",(d,i)=>i*barHeight)
-  .attr("fill","#69b3a2");
-svg.selectAll("text")
-  .data(data)
-  .enter()
-  .append("text")
-  .attr("x", d=>d*2 + 5)
-  .attr("y",(d,i)=>i*barHeight + 17)
-  .text(d=>d);
+  .append("button")
+  .text(d=>d)
+  .on("click", (event,d)=>{
+    const index = labels.indexOf(d);
+    data[index] += 10; // increase bar
+    renderBars();
+  });
 </script>
 
 </body>
